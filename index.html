@@ -36,7 +36,7 @@
 <section id="projects" class="section">
   <p class="eyebrow">SELECTED WORK</p><h2>Projects</h2>
   <article class="project">
-    <img src="assets/reservation-giftcards.png" alt="Dine on Demand reservation and gift card screens">
+    <img src="assets/cropped/reservation-flow.png" alt="Dine on Demand reservation screens">
     <div><small>01 / CASE STUDY</small><h3>Dine on Demand</h3><p class="muted">iOS Restaurant Ordering & Reservation Platform</p><p>A centralized dining platform combining restaurant discovery, reservations, food ordering, spending management, gift cards, and delivery tracking.</p><div class="tags"><span>Project Lead</span><span>Swift</span><span>Firebase</span><span>Sketch</span></div><a class="link" href="#dine">Read the case study →</a></div>
   </article>
   <div class="cards">
@@ -110,11 +110,13 @@
     <article><b>Manager</b><p>Manage reservations and orders, view restaurant financial information, and approve employee requests.</p></article>
     <article><b>Admin</b><p>Manage restaurant information, view analytics, manage accounts, and approve manager accounts.</p></article>
   </div>
+  <figure class="visual-card diagram"><img src="assets/cropped/use-case-diagram-clean.png" alt="Dine on Demand use case diagram showing customer and operational roles"><figcaption>Use case diagram mapping the application roles and their interactions with core functionality.</figcaption></figure>
   <div class="role-box"><b>ACCESS MODEL</b><p>Each role was mapped to specific actions and data access. Customers handled dining activities; restaurant staff managed reservations and orders; cooks updated preparation status; drivers handled delivery and location updates; managers approved employee accounts and managed restaurant operations; administrators managed restaurant-level information, analytics, and manager approvals.</p></div>
 </div>
 
 <div class="case-block">
   <small>07 — PRODUCT DESIGN & WIREFRAMES</small>
+  <div class="app-gallery"><figure class="visual-card app primary"><div class="gallery-label">RESERVATION FLOW</div><img src="assets/cropped/reservation-flow.png" alt="Dine on Demand restaurant reservation screens"><figcaption>Restaurant discovery, details, reservation history, and reservation management.</figcaption></figure><figure class="visual-card app secondary"><div class="gallery-label">GIFT CARDS</div><img src="assets/cropped/gift-card-flow.png" alt="Dine on Demand gift card purchase and redemption screens"><figcaption>Gift card redemption and purchase flow.</figcaption></figure></div>
   <div class="two"><h3>Designing around the defined requirements and workflows.</h3><div class="copy"><p>After defining the core requirements and user roles, our team moved into the design phase. We used Sketch to create the application's interface designs before implementing them in Xcode.</p><p>The designs established the structure and flow of the application, including account access, restaurant discovery, reservations, ordering, budgeting, gift cards, and operational workflows.</p></div></div>
   <div class="feature-grid">
     <article><span>FLOW 01</span><h4>Restaurant Discovery & Reservations</h4><p>Users could discover restaurants, review restaurant details, select available dates and times, and make or manage reservations.</p></article>
@@ -131,6 +133,7 @@
     <article><span>FRONT END</span><h4>iOS Application</h4><p>Built with Xcode, Swift, and UIKit. The interface supported customer-facing experiences as well as operational workflows for employees, cooks, drivers, managers, and administrators.</p></article>
     <article><span>DATA & SECURITY</span><h4>Firebase + Role-Based Access</h4><p>Firebase supported application data including accounts, restaurants, menus, reservations, and orders. Role-based access controlled functionality, while sensitive information such as passwords and payment information was encrypted.</p></article>
   </div>
+  <figure class="visual-card diagram"><img src="assets/cropped/customer-data-flow-clean.png" alt="Dine on Demand customer workflow and data flow diagram"><figcaption>Customer workflow and data flow connecting authentication, reservations, ordering, budgeting, gift cards, and order tracking.</figcaption></figure>
   <div class="role-box"><b>CUSTOMER DATA FLOW</b><p>The customer workflow moved from authentication into core actions such as restaurant discovery, reservations, ordering, budgeting, gift cards, and order tracking. The same underlying data supported the connected experiences across the different account roles.</p></div>
 </div>
 
@@ -153,6 +156,7 @@
 
 <div class="case-block">
   <small>10 — TESTING & QUALITY ASSURANCE</small>
+  <figure class="visual-card app"><img src="assets/cropped/delivery-tracking-clean.png" alt="Dine on Demand delivery tracking app screens"><figcaption>Delivery tracking screens showing the connected driver and customer delivery experience.</figcaption></figure>
   <div class="two"><h3>Testing individual features and connected workflows.</h3><div class="copy"><p>Testing was performed throughout development using both black-box and white-box methods.</p><ul><li><b>Black-box testing:</b> test data and multiple test cases verified expected results.</li><li><b>Functional testing:</b> features, buttons, functions, and screens were tested against intended behavior.</li><li><b>Smoke testing:</b> major functions were tested together, including connected delivery workflows.</li><li><b>White-box testing:</b> code-level testing and debugging verified code paths.</li><li><b>Unit testing:</b> individual methods and functions were tested, including GPS tracking, delivery addresses, and spending updates.</li></ul></div></div>
   <div class="feature-grid">
     <article><span>BLACK-BOX</span><h4>Functional Testing</h4><p>Test cases verified that features, buttons, screens, ordering, reservations, gift cards, account information, and role-specific functionality produced the expected results.</p></article>
@@ -166,6 +170,7 @@
   <small>11 — RESULTS & OUTCOMES</small>
   <h3>A completed iOS platform spanning customer and operational workflows.</h3>
   <div class="numbers"><div><b>6</b><span>account types</span></div><div><b>5</b><span>restaurants in scope</span></div><div><b>8</b><span>development sprints</span></div><div><b>1</b><span>connected dining experience</span></div></div>
+  <figure class="visual-card app"><img src="assets/cropped/budget-spending-clean.png" alt="Dine on Demand weekly budget and spending screens"><figcaption>Weekly budget and spending interface used to help customers track restaurant spending.</figcaption></figure>
   <div class="outcome-list"><p>✓ Restaurant discovery and reservation functionality</p><p>✓ Food ordering for pickup and delivery</p><p>✓ Weekly food budgeting and spending history</p><p>✓ Gift card purchasing and redemption</p><p>✓ Delivery location tracking using a map</p><p>✓ Role-based access and encryption of sensitive information</p></div>
 </div>
 
