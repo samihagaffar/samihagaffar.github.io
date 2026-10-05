@@ -110,20 +110,28 @@
     <article><b>Manager</b><p>Manage reservations and orders, view restaurant financial information, and approve employee requests.</p></article>
     <article><b>Admin</b><p>Manage restaurant information, view analytics, manage accounts, and approve manager accounts.</p></article>
   </div>
-  <img class="visual diagram" src="assets/use-case-diagram.png" alt="Use case diagram mapping the six Dine on Demand roles to system functionality">
-  <p class="caption">Use case diagram mapping interactions between user roles and core system functionality.</p>
+  <div class="role-box"><b>ACCESS MODEL</b><p>Each role was mapped to specific actions and data access. Customers handled dining activities; restaurant staff managed reservations and orders; cooks updated preparation status; drivers handled delivery and location updates; managers approved employee accounts and managed restaurant operations; administrators managed restaurant-level information, analytics, and manager approvals.</p></div>
 </div>
 
 <div class="case-block">
   <small>07 — PRODUCT DESIGN & WIREFRAMES</small>
   <div class="two"><h3>Designing around the defined requirements and workflows.</h3><div class="copy"><p>After defining the core requirements and user roles, our team moved into the design phase. We used Sketch to create the application's interface designs before implementing them in Xcode.</p><p>The designs established the structure and flow of the application, including account access, restaurant discovery, reservations, ordering, budgeting, gift cards, and operational workflows.</p></div></div>
-  <div class="image-grid"><div><img class="visual" src="assets/reservation-giftcards.png" alt="Reservation and gift card screens"><p class="caption">Reservation flow and gift card purchase/redemption screens.</p></div><div><img class="visual" src="assets/budget-spending.png" alt="Weekly budget and spending screens"><p class="caption">Weekly budget and spending history.</p></div></div>
+  <div class="feature-grid">
+    <article><span>FLOW 01</span><h4>Restaurant Discovery & Reservations</h4><p>Users could discover restaurants, review restaurant details, select available dates and times, and make or manage reservations.</p></article>
+    <article><span>FLOW 02</span><h4>Food Ordering</h4><p>Customers could choose pickup or delivery, place orders, review order history, and track delivery status.</p></article>
+    <article><span>FLOW 03</span><h4>Weekly Budget</h4><p>Customers could set a weekly food-spending limit and review previous spending to understand when they exceeded their budget.</p></article>
+    <article><span>FLOW 04</span><h4>Gift Cards</h4><p>Customers could purchase gift cards and redeem existing balances within the application.</p></article>
+  </div>
 </div>
 
 <div class="case-block">
   <small>08 — DEVELOPMENT & TECHNICAL IMPLEMENTATION</small>
   <div class="two"><h3>Native iOS implementation with role-based access.</h3><div class="copy"><p>The application was developed as a native iOS application using Xcode and Swift, with Firebase used for database functionality. UIKit was used as part of the front-end development, and Sketch was used for UI design.</p><p>The system supported six account types with different functionality based on each user's responsibilities. Security was incorporated through role-based access and encryption of sensitive information such as passwords and customer payment information.</p></div></div>
-  <img class="visual" src="assets/customer-data-flow.png" alt="Customer workflow and data flow diagram"><p class="caption">Customer workflow and data flow from authentication through budgeting, reservations, gift cards, and ordering.</p>
+  <div class="decision-grid">
+    <article><span>FRONT END</span><h4>iOS Application</h4><p>Built with Xcode, Swift, and UIKit. The interface supported customer-facing experiences as well as operational workflows for employees, cooks, drivers, managers, and administrators.</p></article>
+    <article><span>DATA & SECURITY</span><h4>Firebase + Role-Based Access</h4><p>Firebase supported application data including accounts, restaurants, menus, reservations, and orders. Role-based access controlled functionality, while sensitive information such as passwords and payment information was encrypted.</p></article>
+  </div>
+  <div class="role-box"><b>CUSTOMER DATA FLOW</b><p>The customer workflow moved from authentication into core actions such as restaurant discovery, reservations, ordering, budgeting, gift cards, and order tracking. The same underlying data supported the connected experiences across the different account roles.</p></div>
 </div>
 
 <div class="case-block">
@@ -146,7 +154,12 @@
 <div class="case-block">
   <small>10 — TESTING & QUALITY ASSURANCE</small>
   <div class="two"><h3>Testing individual features and connected workflows.</h3><div class="copy"><p>Testing was performed throughout development using both black-box and white-box methods.</p><ul><li><b>Black-box testing:</b> test data and multiple test cases verified expected results.</li><li><b>Functional testing:</b> features, buttons, functions, and screens were tested against intended behavior.</li><li><b>Smoke testing:</b> major functions were tested together, including connected delivery workflows.</li><li><b>White-box testing:</b> code-level testing and debugging verified code paths.</li><li><b>Unit testing:</b> individual methods and functions were tested, including GPS tracking, delivery addresses, and spending updates.</li></ul></div></div>
-  <img class="visual" src="assets/delivery-tracking.png" alt="Cross-role delivery tracking screens"><p class="caption">Cross-role delivery tracking connecting driver and customer experiences.</p>
+  <div class="feature-grid">
+    <article><span>BLACK-BOX</span><h4>Functional Testing</h4><p>Test cases verified that features, buttons, screens, ordering, reservations, gift cards, account information, and role-specific functionality produced the expected results.</p></article>
+    <article><span>INTEGRATION</span><h4>Smoke Testing</h4><p>Major functions were tested together. Delivery tracking was one example where the driver's location and the customer's view needed to update as part of the same workflow.</p></article>
+    <article><span>WHITE-BOX</span><h4>Code-Level Testing</h4><p>Code paths were traced and debugged to verify that the application's logic executed correctly.</p></article>
+    <article><span>UNIT TESTING</span><h4>Individual Functions</h4><p>Individual methods were tested, including functionality related to GPS tracking, delivery addresses, and updating customer spending data.</p></article>
+  </div>
 </div>
 
 <div class="case-block">
