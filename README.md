@@ -1,2 +1,3 @@
-# samihagaffar.github.io
-Samiha Gaffar | Professional Portfolio
+# Samiha Gaffar | Professional Portfolio
+
+Static portfolio site for GitHub Pages.
