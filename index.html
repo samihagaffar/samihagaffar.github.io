@@ -8,9 +8,23 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+<header class="site-nav">
   <a class="logo" href="#home">Samiha Gaffar</a>
-  <nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#dine">Case Study</a><a href="resume.pdf" target="_blank">Resume</a><a href="#contact">Contact</a></nav>
+  <nav>
+    <a href="#about">About</a>
+    <details class="nav-projects" open>
+      <summary>Projects</summary>
+      <div class="project-links">
+        <a href="#dine">Dine on Demand</a>
+        <a href="#auto">Auto Insurance App</a>
+        <a href="#connect">Connect NYC</a>
+        <a href="#azure">Azure Project</a>
+      </div>
+    </details>
+    <a href="resume.pdf" target="_blank">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-socials"><a href="https://www.linkedin.com/in/samiha-gaffar" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/samihagaffar" target="_blank" rel="noopener">GitHub</a></div>
 </header>
 
 <main>
@@ -47,7 +61,7 @@
     <img src="assets/connect/profile.png" alt="Connect NYC profile screen">
     <div><small>03 / CASE STUDY</small><h3>Connect NYC</h3><p class="muted">Cross-Platform Student & Community App</p><p>A community platform designed to help organization members connect, discover events, communicate, access food delivery, and manage their profiles.</p><div class="tags"><span>Product Team Member</span><span>Flutter</span><span>Firebase</span><span>Scrum</span></div><a class="link" href="#connect">Read the case study →</a></div>
   </article>
-  <div class="cards cards-single">
+  <div id="azure" class="cards cards-single">
     <article><small>04</small><h3>Azure Project</h3><p>Future cloud-focused project demonstrating technical and business problem-solving.</p><em>Coming soon</em></article>
   </div>
 </section>
@@ -223,7 +237,7 @@
 
 <div class="case-block"><small>09 — TESTING & LIMITATIONS</small><div class="two"><h3>Testing focused on core functions and data behavior.</h3><div class="copy"><p>The team tested functions, features, buttons, screens, database uploads/downloads, PDF generation, integration behavior, and major application functionality through functional, unit, integration, and smoke testing.</p><p>Key limitations included time, the learning curve for Firebase/Xcode and PDF generation, and the cost constraint that led to combining the databases.</p></div></div></div>
 
-<div class="case-block outcome"><small>10 — OUTCOME & LEARNINGS</small><h3>A complete prototype centered on the core insurance journey.</h3><div class="takeaways"><div><b>Leadership</b><p>I managed team progress, maintained the timeline, and coordinated project documentation and diagrams.</p></div><div><b>Product focus</b><p>Competitive research helped us narrow the experience around the highest-priority insurance journey.</p></div><div><b>Technical understanding</b><p>The project strengthened my experience with Xcode, Swift, Firebase, system diagrams, and mobile workflows.</p></div><div><b>Constraints</b><p>Project decisions had to balance user experience, technical feasibility, time, and cost.</p></div></div></div>
+<div class="case-block outcome auto-outcome"><small>10 — OUTCOME & LEARNINGS</small><h3>A complete prototype centered on the core insurance journey.</h3><div class="takeaways"><div><b>Leadership</b><p>I managed team progress, maintained the timeline, and coordinated project documentation and diagrams.</p></div><div><b>Product focus</b><p>Competitive research helped us narrow the experience around the highest-priority insurance journey.</p></div><div><b>Technical understanding</b><p>The project strengthened my experience with Xcode, Swift, Firebase, system diagrams, and mobile workflows.</p></div><div><b>Constraints</b><p>Project decisions had to balance user experience, technical feasibility, time, and cost.</p></div></div></div>
 </section>
 
 <section id="connect" class="case">
