@@ -11,18 +11,18 @@
 <header class="site-nav">
   <a class="logo" href="#home">Samiha Gaffar</a>
   <nav>
-    <a href="#about">About</a>
-    <details class="nav-projects" open>
-      <summary>Projects</summary>
+    <a class="nav-main-link" data-section="about" href="#about">About</a>
+    <details class="nav-projects">
+      <summary class="nav-main-link" data-section="projects">Projects</summary>
       <div class="project-links">
-        <a href="#dine">Dine on Demand</a>
-        <a href="#auto">Auto Insurance App</a>
-        <a href="#connect">Connect NYC</a>
-        <a href="#azure">Azure Project</a>
+        <a class="nav-project-link" data-section="dine" href="#dine">Dine on Demand</a>
+        <a class="nav-project-link" data-section="auto" href="#auto">Auto Insurance App</a>
+        <a class="nav-project-link" data-section="connect" href="#connect">Connect NYC</a>
+        <a class="nav-project-link" data-section="azure" href="#azure">Azure Project</a>
       </div>
     </details>
-    <a href="resume.pdf" target="_blank">Resume</a>
-    <a href="#contact">Contact</a>
+    <a class="nav-main-link nav-resume-link" data-section="resume" href="resume.pdf" target="_blank">Resume</a>
+    <a class="nav-main-link" data-section="contact" href="#contact">Contact</a>
   </nav>
   <div class="nav-socials"><a href="https://www.linkedin.com/in/samiha-gaffar" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/samihagaffar" target="_blank" rel="noopener">GitHub</a></div>
 </header>
@@ -267,5 +267,55 @@
 
 <section id="contact" class="section contact"><p class="eyebrow">CONTACT</p><h2>Let's connect.</h2><p class="copy">I'm open to conversations about opportunities, projects, and technology.</p><div class="contact-links"><a href="mailto:samihagaffar@gmail.com">Email</a><a href="https://www.linkedin.com/in/samiha-gaffar" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/samihagaffar" target="_blank" rel="noopener">GitHub</a></div></section>
 </main>
+<script>
+(() => {
+  const mainLinks = [...document.querySelectorAll('.nav-main-link')];
+  const projectLinks = [...document.querySelectorAll('.nav-project-link')];
+  const sections = ['about', 'projects', 'contact', 'dine', 'auto', 'connect', 'azure']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  function clearActive() {
+    [...mainLinks, ...projectLinks].forEach(link => link.classList.remove('active'));
+  }
+
+  function setActive(sectionId) {
+    clearActive();
+    if (sectionId === 'dine' || sectionId === 'auto' || sectionId === 'connect' || sectionId === 'azure') {
+      const projects = mainLinks.find(link => link.dataset.section === 'projects');
+      const project = projectLinks.find(link => link.dataset.section === sectionId);
+      if (projects) projects.classList.add('active');
+      if (project) project.classList.add('active');
+    } else {
+      const link = mainLinks.find(link => link.dataset.section === sectionId);
+      if (link) link.classList.add('active');
+    }
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: '-35% 0px -50% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75] });
+
+  sections.forEach(section => observer.observe(section));
+
+  [...mainLinks, ...projectLinks].forEach(link => {
+    link.addEventListener('click', () => {
+      if (link.dataset.section === 'resume') {
+        clearActive();
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Set a sensible initial state when the page loads.
+  const hash = window.location.hash.replace('#', '');
+  if (hash && ['about','projects','contact','dine','auto','connect','azure'].includes(hash)) {
+    setActive(hash);
+  }
+})();
+</script>
 <footer><span>© 2026 Samiha Gaffar</span><span>Technology · Product · Business</span></footer>
 </body></html>

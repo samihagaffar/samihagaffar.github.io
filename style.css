@@ -79,3 +79,18 @@ header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-betwee
 .auto-outcome .takeaways .outcome-card b { display:block !important; color:#ffffff !important; font-size:24px !important; line-height:1.15 !important; margin:0 !important; }
 .auto-outcome .takeaways .outcome-card p { color:#d0d0d0 !important; font-size:16px !important; line-height:1.65 !important; margin:12px 0 0 !important; }
 @media(max-width:850px){ .auto-outcome .takeaways { grid-template-columns:1fr !important; } }
+
+/* Active navigation state */
+.site-nav nav > a.active,
+.site-nav .nav-projects summary.active,
+.site-nav .project-links a.active{
+  color:var(--ink);
+  font-weight:700;
+}
+.site-nav nav > a.active,
+.site-nav .nav-projects summary.active{
+  background:var(--soft);
+}
+.site-nav .project-links a.active{
+  background:var(--soft);
+}
