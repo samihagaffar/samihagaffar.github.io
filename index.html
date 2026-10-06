@@ -271,9 +271,11 @@
 (() => {
   const mainLinks = [...document.querySelectorAll('.nav-main-link')];
   const projectLinks = [...document.querySelectorAll('.nav-project-link')];
-  const sections = ['about', 'projects', 'contact', 'dine', 'auto', 'connect', 'azure']
+  const sectionIds = ['about', 'projects', 'dine', 'auto', 'connect', 'azure', 'contact'];
+  const sections = sectionIds
     .map(id => document.getElementById(id))
     .filter(Boolean);
+  const projectIds = new Set(['dine', 'auto', 'connect', 'azure']);
 
   function clearActive() {
     [...mainLinks, ...projectLinks].forEach(link => link.classList.remove('active'));
@@ -281,40 +283,68 @@
 
   function setActive(sectionId) {
     clearActive();
-    if (sectionId === 'dine' || sectionId === 'auto' || sectionId === 'connect' || sectionId === 'azure') {
+
+    if (projectIds.has(sectionId)) {
       const projects = mainLinks.find(link => link.dataset.section === 'projects');
       const project = projectLinks.find(link => link.dataset.section === sectionId);
       if (projects) projects.classList.add('active');
       if (project) project.classList.add('active');
-    } else {
-      const link = mainLinks.find(link => link.dataset.section === sectionId);
-      if (link) link.classList.add('active');
+      return;
+    }
+
+    const link = mainLinks.find(link => link.dataset.section === sectionId);
+    if (link) link.classList.add('active');
+  }
+
+  // Use a fixed point in the viewport instead of IntersectionObserver ratios.
+  // This keeps the active state stable even when sections have very different heights.
+  function updateActiveSection() {
+    const marker = window.innerHeight * 0.32;
+    let current = null;
+
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= marker && rect.bottom > marker) {
+        current = section.id;
+        break;
+      }
+    }
+
+    if (current) setActive(current);
+    else if (window.scrollY < 80) clearActive();
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveSection();
+        ticking = false;
+      });
+      ticking = true;
     }
   }
 
-  const observer = new IntersectionObserver(entries => {
-    const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-    if (visible.length) setActive(visible[0].target.id);
-  }, { rootMargin: '-35% 0px -50% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75] });
-
-  sections.forEach(section => observer.observe(section));
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', updateActiveSection);
+  window.addEventListener('hashchange', updateActiveSection);
 
   [...mainLinks, ...projectLinks].forEach(link => {
     link.addEventListener('click', () => {
-      if (link.dataset.section === 'resume') {
-        clearActive();
-        link.classList.add('active');
+      const sectionId = link.dataset.section;
+      if (projectIds.has(sectionId)) {
+        // Keep the project list open after selecting a project.
+        const details = document.querySelector('.nav-projects');
+        if (details) details.open = true;
       }
     });
   });
 
-  // Set a sensible initial state when the page loads.
-  const hash = window.location.hash.replace('#', '');
-  if (hash && ['about','projects','contact','dine','auto','connect','azure'].includes(hash)) {
-    setActive(hash);
-  }
+  // Set the correct state after the browser finishes the initial hash jump.
+  window.addEventListener('load', () => {
+    setTimeout(updateActiveSection, 50);
+  });
+  updateActiveSection();
 })();
 </script>
 <footer><span>© 2026 Samiha Gaffar</span><span>Technology · Product · Business</span></footer>
