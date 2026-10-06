@@ -54,9 +54,9 @@ header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-betwee
 
 /* Consistent outcome cards */
 .auto-outcome .takeaways{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.auto-outcome .takeaways article{background:var(--ink);color:#fff;border:0;border-radius:24px;padding:30px}
-.auto-outcome .takeaways b{display:block;font-size:24px;line-height:1.1}
-.auto-outcome .takeaways p{color:#d0d0d0;margin-bottom:0;margin-top:10px}
+.auto-outcome .takeaways > div{background:var(--ink);color:#fff;border:0;border-radius:24px;padding:30px}
+.auto-outcome .takeaways > div > b{display:block;font-size:24px;line-height:1.1}
+.auto-outcome .takeaways > div > p{color:#d0d0d0;margin-bottom:0;margin-top:10px}
 
 @media(max-width:850px){
   .site-nav{position:sticky;top:0;height:auto;min-height:0;padding:15px 18px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
