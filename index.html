@@ -296,10 +296,10 @@
     if (link) link.classList.add('active');
   }
 
-  // Use a fixed point in the viewport instead of IntersectionObserver ratios.
-  // This keeps the active state stable even when sections have very different heights.
+  // Use a lower viewport marker so the navigation follows the section that is
+  // actually occupying the majority of the visible page, especially near transitions.
   function updateActiveSection() {
-    const marker = window.innerHeight * 0.32;
+    const marker = window.innerHeight * 0.60;
     let current = null;
 
     for (const section of sections) {
